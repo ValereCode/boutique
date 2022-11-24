@@ -1,2 +1,4 @@
 # javaCode
-Here are my java language codes
+
+Il s'agit d'un projet de gestion de boutiques
+
