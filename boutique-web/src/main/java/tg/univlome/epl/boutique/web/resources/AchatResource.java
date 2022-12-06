@@ -10,31 +10,30 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import tg.univlome.epl.boutique.api.Produit;
-import tg.univlome.epl.boutique.service.ProduitService;
+import tg.univlome.epl.boutique.api.Achat;
+import tg.univlome.epl.boutique.service.AchatService;
 
 /**
  *
  * @author setodji
  */
-@Path("/rs")
-public class ProduitResource {
+@Path("/achat")
+public class AchatResource {
+    
+    private AchatService service;
 
-    private ProduitService service;
-
-    //@GET
-    public ProduitResource() {
-        this.service = ProduitService.getInstance();
+    public AchatResource() {
+        this.service = AchatService.getInstance();
     }
     
     @PUT
-    public void ajouter(Produit p) {
-        this.service.ajouter(p);
+    public void ajouter(Achat achat) {
+        this.service.ajouter(achat);
     } 
 
     @POST
-    public void modifier(Produit p) {
-        this.service.modifier(p);
+    public void modifier(Achat achat) {
+        this.service.modifier(achat);
     }
 
     @DELETE
@@ -43,7 +42,7 @@ public class ProduitResource {
     }
     
     @GET
-    public Produit trouver(long id) {
+    public Achat trouver(long id) {
         return this.service.trouver(id);
     }
 
@@ -55,8 +54,8 @@ public class ProduitResource {
 
     @GET
     @Path("/liste")
-    public List<Produit> lister() {
+    public List<Achat> lister() {
         return service.lister();
     }
-
+    
 }

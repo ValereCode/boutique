@@ -6,74 +6,61 @@ package tg.univlome.epl.boutique.service;
 
 import java.util.LinkedList;
 import java.util.List;
-import tg.univlome.epl.boutique.entites.Produit;
+import tg.univlome.epl.boutique.api.Produit;
 
 /**
  *
  * @author setodji
  */
 public class ProduitService {
-    
-    private static List<Produit> liste = new LinkedList<>();
-    private static ProduitService instance = null; 
 
-    private ProduitService() 
-    {
-        //this.getInstance();
+    private static List<Produit> liste = new LinkedList<>();
+    private static ProduitService instance = null;
+
+    private ProduitService() {
+       
     }
-    
-    public synchronized static ProduitService getInstance()
-    {
-        if(instance == null) 
-        {
+
+    public synchronized static ProduitService getInstance() {
+        if (instance == null) {
             instance = new ProduitService();
         }
         return instance;
     }
-    
-    public void ajouter(Produit p)
-    {
+
+    public void ajouter(Produit p) {
         liste.add(p);
     }
-    
-    public void modifier(Produit p)
-    {
+
+    public void modifier(Produit p) {
         int i = liste.indexOf(p);
         if (i >= 0) {
             liste.set(i, p);
         }
     }
-    
-    public void supprimer(long id)
-    {
+
+    public void supprimer(long id) {
         Produit p2 = this.trouver(id);
-            if(p2 != null) 
-            {
-                liste.remove(p2);
-            }
+        if (p2 != null) {
+            liste.remove(p2);
+        }
     }
-    
-    public Produit trouver(long id)
-    {
-        for(Produit p: liste) 
-        {
-            if(p.getId() == id) 
-            {
+
+    public Produit trouver(long id) {
+        for (Produit p : liste) {
+            if (p.getId() == id) {
                 return p;
             }
         }
         return null;
     }
-    
-    public int compter( )
-    {
+
+    public int compter() {
         return liste.size();
     }
-    
-    public List<Produit> lister()
-    {
+
+    public List<Produit> lister() {
         return liste;
     }
-    
 
 }
