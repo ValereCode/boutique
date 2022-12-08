@@ -5,11 +5,13 @@
 package tg.univlome.epl.boutique.web.resources;
 
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import tg.univlome.epl.boutique.api.Categorie;
 import tg.univlome.epl.boutique.service.CategorieService;
 
@@ -27,6 +29,7 @@ public class CategorieResource {
     }
     
     @PUT
+    @Consumes({"application/json", "application/xml"})
     public void ajouter(Categorie categorie) {
         this.service.ajouter(categorie);
     } 
@@ -54,6 +57,7 @@ public class CategorieResource {
 
     @GET
     @Path("/liste")
+    @Produces({"application/json", "application/xml"})
     public List<Categorie> lister() {
         return service.lister();
     }
