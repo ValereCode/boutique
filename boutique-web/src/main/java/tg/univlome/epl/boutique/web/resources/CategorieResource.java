@@ -11,7 +11,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import tg.univlome.epl.boutique.api.Categorie;
 import tg.univlome.epl.boutique.service.CategorieService;
 
@@ -29,23 +31,27 @@ public class CategorieResource {
     }
     
     @PUT
-    @Consumes({"application/json", "application/xml"})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public void ajouter(Categorie categorie) {
         this.service.ajouter(categorie);
     } 
 
     @POST
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public void modifier(Categorie categorie) {
         this.service.modifier(categorie);
     }
 
     @DELETE
-    public void supprimer(long id) {
+    @Path("/{id}")
+    public void supprimer(@PathParam("id") long id) {
         this.service.supprimer(id);
     }
     
     @GET
-    public Categorie trouver(long id) {
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Categorie trouver(@PathParam("id") long id) {
         return this.service.trouver(id);
     }
 
@@ -56,8 +62,7 @@ public class CategorieResource {
     }
 
     @GET
-    @Path("/liste")
-    @Produces({"application/json", "application/xml"})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Categorie> lister() {
         return service.lister();
     }

@@ -43,16 +43,20 @@ public class Achat implements Serializable{
     //==========================================================================
     public double getRemiseTotale() {
         double rTotale = 0; 
-        for(ProduitAchete p : listeAchat) {
-           rTotale += p.getRemise();
-        }
+        if (listeAchat != null) {
+            for(ProduitAchete p : listeAchat) {
+                rTotale += p.getRemise();
+            }
+        }       
         return rTotale;
     }
     
     public double getTotalAPayer() {
         double pTotale = 0;
-        for(ProduitAchete p : listeAchat) {
-           pTotale += p.getProduit().getPrixUnitaire();
+        if (listeAchat != null) {
+            for(ProduitAchete p : listeAchat) {
+                pTotale += p.getProduit().getPrixUnitaire();
+            }
         }
         return pTotale;
     }
